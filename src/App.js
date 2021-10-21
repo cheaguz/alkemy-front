@@ -1,10 +1,13 @@
-
+import {LoginProvider} from './context/loginContext'
+import { LoginComponent } from "./Components/LoginComponent";
 
 function App() {
   return (
-    <div >
-   
-    </div>
+    <LoginProvider >
+      <div >
+        <LoginComponent />
+      </div>
+    </LoginProvider>
   );
 }
 
