@@ -3,11 +3,13 @@ import React from 'react';
 import {Table , TableBody ,TableCell , TableHead , TableRow , Paper , Container} from '@material-ui/core'
 
 import  useOperation  from '../../Hooks/useOperation'
+import EditOperation from './EditOperation'
 
    
 const Operations = (props) => {
-  const  { data } = useOperation();
+  const  { data , deleteOperation} = useOperation();
     
+
     return (
         <Container>
           <Paper style={{width: '100%',overflowX: 'auto'}}>
@@ -34,7 +36,10 @@ const Operations = (props) => {
                     <TableCell align="right">{op.MONTO}</TableCell>
                     <TableCell align="right">{op.TIPO_OPERACION}</TableCell>
                     <TableCell align="right">{op.CATEGORIA_ID}</TableCell>
-                    <TableCell align="right"><button> X </button> <button>E</button> </TableCell>
+                    <TableCell align="right">
+                      <button onClick={()=>{deleteOperation(op.ID)}}> X </button>
+                      <EditOperation /> 
+                      </TableCell>
                   </TableRow>
               ))}
 

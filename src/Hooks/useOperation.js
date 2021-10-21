@@ -19,7 +19,12 @@ const [data , setData] = useState([{}])
         })
     };
 
-    return { data }
+
+    const deleteOperation = (id) => {
+        console.log("deleted",id)
+    }
+
+    return { data, deleteOperation }
 };
 
 export default useOperation
