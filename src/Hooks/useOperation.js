@@ -3,7 +3,7 @@ import axios from 'axios'
 
 const useOperation = () =>{
 const [data , setData] = useState([{}])
-const [categories , setCategories ] = useState([])
+const [categories , setCategories ] = useState([]);
 
     useEffect( ()=>{
       getOperations()
@@ -17,7 +17,6 @@ const [categories , setCategories ] = useState([])
         axios.get("http://localhost:3000/operation")
         .then(res =>{
             setData(res.data[0]);
-            console.log(res.data[0])
         })
         .catch(err => {
             console.log(err)
@@ -37,11 +36,32 @@ const [categories , setCategories ] = useState([])
         .catch(err =>{
             console.log(err)
         })
-    }
+    };
+
+    const getEgresos = () =>{
+        axios.get('http://localhost:3000/operation/egreso')
+        .then(res => {
+            console.log(res)
+            setData(res.data[0])
+        })
+        .catch(err => {
+            console.log(err)
+        })
+    };
+
+    const getIngresos = () =>{
+        axios.get('http://localhost:3000/operation/ingreso')
+        .then(res => {
+            setData(res.data[0])
+        })
+        .catch(err => {
+            console.log(err)
+        })
+    };
 
     
 
-    return { data, deleteOperation , categories,getCategories }
+    return { data, deleteOperation , categories,getCategories , getEgresos , getOperations , getIngresos }
 };
 
 export default useOperation

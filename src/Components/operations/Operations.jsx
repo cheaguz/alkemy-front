@@ -1,4 +1,4 @@
-import React from 'react';
+import React  from 'react';
 
 import {Table , TableBody ,TableCell , TableHead , TableRow , Paper , Container} from '@material-ui/core'
 
@@ -7,11 +7,13 @@ import EditOperation from './EditOperation'
 
    
 const Operations = (props) => {
-  const  { data , deleteOperation} = useOperation();
-    
+  const  { data , deleteOperation , getEgresos , getOperations , getIngresos} = useOperation();
 
     return (
         <Container>
+          <button onClick={getEgresos}> EGRESO </button>
+          <button onClick={getIngresos}> Ingresos </button>
+          <button onClick={getOperations}>  All </button>
           <Paper style={{width: '100%',overflowX: 'auto'}}>
             <Table style={{minWidth: 600}}>
               <TableHead>
@@ -47,6 +49,7 @@ const Operations = (props) => {
           </Table>
         </Paper>
       </Container>
+
     )
 }
 
