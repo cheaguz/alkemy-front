@@ -1,19 +1,20 @@
 import React  from 'react';
 
-import {Table , TableBody ,TableCell , TableHead , TableRow , Paper , Container} from '@material-ui/core'
+import {Table , TableBody ,TableCell , TableHead , TableRow , Paper , Container , Button} from '@material-ui/core'
 
-import  useOperation  from '../../Hooks/useOperation'
 import EditOperation from './EditOperation'
 
    
 const Operations = (props) => {
-  const  { data , deleteOperation , getEgresos , getOperations , getIngresos} = useOperation();
-
+ const {getEgresos , getIngresos , getOperations , data , deleteOperation} = props
     return (
         <Container>
-          <button onClick={getEgresos}> EGRESO </button>
-          <button onClick={getIngresos}> Ingresos </button>
-          <button onClick={getOperations}>  All </button>
+          <Container>
+            <Button variant="contained"  color="secondary" onClick={getEgresos}> EGRESO </Button>
+            <Button variant="outlined"  color="secondary" onClick={getIngresos}> Ingresos </Button>
+            <Button variant="outlined"  color="secondary" onClick={getOperations}>  All </Button>
+          </Container>
+
           <Paper style={{width: '100%',overflowX: 'auto'}}>
             <Table style={{minWidth: 600}}>
               <TableHead>

@@ -1,14 +1,14 @@
 import React  from 'react'
 import useOperation from '../../Hooks/useOperation';
 
-const Categories = () => {
+const Categories = (props) => {
     const { categories , getEgresos } = useOperation();
 
     return (
         <div>
             <ul>
                 {categories.map(cat=>(
-                    <li key={cat.ID}><button onClick ={getEgresos}>{cat.NOMBRE} </button> </li>
+                    <li key={cat.ID}><button onClick ={props.getEgresos}>{cat.NOMBRE} </button> </li>
                     
                 ))}
             </ul>
