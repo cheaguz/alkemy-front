@@ -1,6 +1,6 @@
 import React , {useState}  from 'react'
 import useOperation from '../../Hooks/useOperation';
-import  { FormControl , InputLabel, Select, MenuItem  } from '@material-ui/core'
+import  { FormControl , InputLabel, Select, MenuItem  } from '@mui/material'
 
 const Categories = (props) => {
     

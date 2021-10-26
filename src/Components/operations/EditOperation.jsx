@@ -1,6 +1,6 @@
 import React , { useState}from 'react'
 
-import { Button , TextField , Dialog ,DialogActions , DialogContent ,DialogTitle,} from '@material-ui/core'
+import { Button , TextField , Dialog ,DialogActions , DialogContent ,DialogTitle,} from '@mui/material'
 
 const EditOperation = (props) => {
     const [open , setState ] = useState(false)

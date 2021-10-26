@@ -1,6 +1,6 @@
 import React  from 'react';
 
-import {Table , TableBody ,TableCell , TableHead , TableRow , Paper , Container , Button} from '@material-ui/core'
+import {Table , TableBody ,TableCell , TableHead , TableRow , Paper , Container , Button} from '@mui/material'
 
 import EditOperation from './EditOperation'
 
