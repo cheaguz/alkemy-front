@@ -10,9 +10,9 @@ const Operations = (props) => {
     return (
         <Container>
           <Container>
-            <Button variant="contained"  color="secondary" onClick={getEgresos}> EGRESO </Button>
-            <Button variant="outlined"  color="secondary" onClick={getIngresos}> Ingresos </Button>
-            <Button variant="outlined"  color="secondary" onClick={getOperations}>  All </Button>
+            <Button variant="outlined"   onClick={getEgresos}> EGRESO </Button>
+            <Button variant="outlined"   onClick={getIngresos}> Ingresos </Button>
+            <Button variant="outlined"   onClick={getOperations}>  All </Button>
           </Container>
 
           <Paper style={{width: '100%',overflowX: 'auto'}}>

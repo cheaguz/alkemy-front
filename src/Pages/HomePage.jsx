@@ -6,13 +6,19 @@ import useOperation from '../Hooks/useOperation'
 
 
 const HomePage = () => {
-    const  { data , deleteOperation , getEgresos , getOperations , getIngresos} = useOperation();
+    const  { data , deleteOperation , getEgresos , getOperations , getIngresos ,getOperationByCategories , categories } = useOperation();
 
     return (
         <div>
-            this is a home 
+          <div style ={{
+              border: "1px solid blue",
+              backgroundColor : "blue",
+              color: 'white',
+              textAlign : 'center'
+          }}>Nav Bar</div>
             <Categories 
-                getEgresos={getEgresos}
+                getOperationByCategories={getOperationByCategories}
+                categories={categories}
             />
 
             <Operations 
