@@ -5,14 +5,15 @@ const Categories = () => {
     const { categories , getEgresos } = useOperation();
 
     return (
-        <div>
-            <ul>
-                {categories.map(cat=>(
-                    <li key={cat.ID}><button onClick ={getEgresos}>{cat.NOMBRE} </button> </li>
-                    
-                ))}
-            </ul>
-           
+        <div>   
+                <form> 
+                    <select> 
+                        {categories.map(cat=>(
+                            <option key={cat.ID}> {cat.NOMBRE} </option>
+                            
+                        ))}
+                    </select>
+                </form>  
         </div>
     )
 }
