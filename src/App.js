@@ -1,16 +1,14 @@
 import {LoginProvider} from './context/loginContext'
 /* import { LoginComponent } from "./Components/LoginComponent"; */
 /* import RegisterComponent from './Components/RegisterComponent' */
- import Operations from './Components/operations/Operations' 
-import Categories from './Components/categories/Categories'
+
+import HomePage from './Pages/HomePage'
 
 function App() {
   return (
     <LoginProvider >
-      
         <div >
-          <Categories />
-            <Operations />
+           <HomePage />
         </div>
     </LoginProvider>
   );

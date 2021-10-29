@@ -16,6 +16,7 @@ const [categories , setCategories ] = useState([]);
     const getOperations = () =>{
         axios.get("http://localhost:3000/operation")
         .then(res =>{
+            console.log('data',res.data[0])
             setData(res.data[0]);
         })
         .catch(err => {
@@ -37,6 +38,17 @@ const [categories , setCategories ] = useState([]);
             console.log(err)
         })
     };
+
+    const getOperationByCategories = (nombre)=>{
+        console.log('nombre recibido',nombre)
+        axios.get(`http://localhost:3000/operation/${nombre}`) 
+        .then(res => {
+            setData(res.data.res[0])
+        })
+        .catch(err =>{
+            console.log(err)
+        })
+    }
 
     const getEgresos = () =>{
         axios.get('http://localhost:3000/operation/egreso')
@@ -61,7 +73,15 @@ const [categories , setCategories ] = useState([]);
 
     
 
-    return { data, deleteOperation , categories,getCategories , getEgresos , getOperations , getIngresos }
+    return { data,
+         deleteOperation ,
+          categories,
+          getCategories ,
+          getEgresos ,
+          getOperations ,
+          getIngresos,
+          getOperationByCategories,
+        }
 };
 
 export default useOperation

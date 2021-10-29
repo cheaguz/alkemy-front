@@ -1,9 +1,10 @@
 import React from 'react'
-import { TextField   , Button , Container , Paper  } from '@material-ui/core';
+import { TextField   , Button , Container , Paper  } from '@mui/material';
 import styled from 'styled-components';
 import useRegister from '../Hooks/useRegister'
 
 const avatar = 'assets/avatar.png'
+
 
 
 const RegisterComponent = () => {

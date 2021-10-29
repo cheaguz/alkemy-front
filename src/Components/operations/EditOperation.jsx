@@ -1,6 +1,6 @@
 import React , { useState}from 'react'
 
-import { Button , TextField , Dialog ,DialogActions , DialogContent ,DialogTitle} from '@material-ui/core'
+import { Button , TextField , Dialog ,DialogActions , DialogContent ,DialogTitle,} from '@mui/material'
 
 const EditOperation = (props) => {
     const [open , setState ] = useState(false)
@@ -26,35 +26,17 @@ const EditOperation = (props) => {
           <DialogTitle id="form-dialog-title"> Editar registro </DialogTitle>
           <DialogContent>
 
-
-            
-            <TextField
-              autoFocus
-              margin="dense"
-              id="Concepto"
-              label="Concepto"
-              type="text"
-              fullWidth
-            />
-
-            <TextField
-              autoFocus
-              margin="dense"
-              id="Monto"
-              label="Monto"
-              type="text"
-              fullWidth
-            />
-
-            <TextField
-              autoFocus
-              margin="dense"
-              id="Categoria"
-              label="Categoria"
-              type="text"
-              fullWidth
-            />
-
+          {["Concepto" , "Monto" ,"Categoria"].map(txt =>(
+              <TextField
+                autoFocus
+                margin="dense"
+                id={txt}
+                label={txt}
+                type="text"
+                fullWidth
+                key={txt}
+              />
+          ))}
           </DialogContent>
 
           <DialogActions>
