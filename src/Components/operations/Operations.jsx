@@ -1,20 +1,14 @@
 import React  from 'react';
 
-import {Table , TableBody ,TableCell , TableHead , TableRow , Paper , Container , Button} from '@mui/material'
+import {Table , TableBody ,TableCell , TableHead , TableRow , Paper , Container} from '@mui/material'
 
 import EditOperation from './EditOperation'
 
    
 const Operations = (props) => {
- const {getEgresos , getIngresos , getOperations , data , deleteOperation} = props
+ const { data , deleteOperation} = props
     return (
         <Container>
-          <Container>
-            <Button variant="outlined"   onClick={getEgresos}> EGRESO </Button>
-            <Button variant="outlined"   onClick={getIngresos}> Ingresos </Button>
-            <Button variant="outlined"   onClick={getOperations}>  All </Button>
-          </Container>
-
           <Paper style={{width: '100%',overflowX: 'auto'}}>
             <Table style={{minWidth: 600}}>
               <TableHead>
@@ -31,14 +25,14 @@ const Operations = (props) => {
             <TableBody>
 
               {data.map(op => (
-                  <TableRow key={op.ID*5}>
+                  <TableRow key={op.ID}>
                     <TableCell component="th" scope="row">
                       {op.ID }
                     </TableCell>
                     <TableCell align="right">{op.CONCEPTO}</TableCell>
                     <TableCell align="right">{op.MONTO}</TableCell>
                     <TableCell align="right">{op.TIPO_OPERACION}</TableCell>
-                    <TableCell align="right">{op.CATEGORIA_ID}</TableCell>
+                    <TableCell align="right">{op.NOMBRE}</TableCell>
                     <TableCell align="right">
                       <button onClick={()=>{deleteOperation(op.ID)}}> X </button>
                       <EditOperation /> 

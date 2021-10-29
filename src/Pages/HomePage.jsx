@@ -1,6 +1,7 @@
 import React from 'react'
 import  Operations  from '../Components/operations/Operations';
 import Categories from '../Components/categories/Categories'
+import NavBar from '../Components/NavBar'
 
 import useOperation from '../Hooks/useOperation'
 
@@ -10,24 +11,20 @@ const HomePage = () => {
 
     return (
         <div>
-          <div style ={{
-              border: "1px solid blue",
-              backgroundColor : "blue",
-              color: 'white',
-              textAlign : 'center'
-          }}>Nav Bar</div>
+        <NavBar />
             <Categories 
                 getOperationByCategories={getOperationByCategories}
                 categories={categories}
+                getIngresos={getIngresos}
+                getEgresos={getEgresos}
+                getOperations={getOperations}
             />
 
             <Operations 
                 data={data}
-                getEgresos={getEgresos}
-                getOperations={getOperations}
-                getIngresos={getIngresos}
                 deleteOperation={deleteOperation}
             />
+
         </div>
     )
 }

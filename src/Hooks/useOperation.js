@@ -16,7 +16,7 @@ const [categories , setCategories ] = useState([]);
     const getOperations = () =>{
         axios.get("http://localhost:3000/operation")
         .then(res =>{
-            console.log(res.data[0])
+            console.log('data',res.data[0])
             setData(res.data[0]);
         })
         .catch(err => {
