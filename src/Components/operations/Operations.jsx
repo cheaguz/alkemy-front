@@ -25,14 +25,14 @@ const Operations = (props) => {
             <TableBody>
 
               {data.map(op => (
-                  <TableRow key={op.ID}>
+                  <TableRow key={op.CONCEPTO}>
                     <TableCell component="th" scope="row">
                       {op.ID }
                     </TableCell>
                     <TableCell align="right">{op.CONCEPTO}</TableCell>
                     <TableCell align="right">{op.MONTO}</TableCell>
                     <TableCell align="right">{op.TIPO_OPERACION}</TableCell>
-                    <TableCell align="right">{op.NOMBRE}</TableCell>
+                    <TableCell align="right">{op.CATEGORIA_ID}</TableCell>
                     <TableCell align="right">
                       <button onClick={()=>{deleteOperation(op.ID)}}> X </button>
                       <EditOperation /> 

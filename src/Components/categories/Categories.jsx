@@ -1,5 +1,5 @@
 import React , {useState}  from 'react'
-import NewCategory from './NewCategory';
+import NewCategory from './newCategory';
 
 import  {  Select, MenuItem , InputLabel , Container , Button, Grid  } from '@mui/material'
 
