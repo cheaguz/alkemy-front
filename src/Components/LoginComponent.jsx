@@ -9,7 +9,8 @@ export const LoginComponent = () =>{
   const [formik ] = useLogin();
 
     return(
-        <Container maxWidth="sm" style={{padding : "10%"}}>  
+        <Container maxWidth="sm" style={{padding : "10%"}}>
+            <StyledTitle> Iniciar Sesion </StyledTitle>  
             <Paper style={{padding : "5%"}}>
 
                 <StyledDivImg>
@@ -75,3 +76,6 @@ display: flex;
 justify-content: center;
 `;
 
+const StyledTitle = styled.h1`
+text-align : center;
+`;

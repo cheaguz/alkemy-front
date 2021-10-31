@@ -1,12 +1,14 @@
 import React  from 'react';
 
-import {Table , TableBody ,TableCell , TableHead , TableRow , Paper , Container} from '@mui/material'
+import {Table , TableBody ,TableCell , TableHead , TableRow , Paper , Container  } from '@mui/material'
+import DeleteIcon  from '@mui/icons-material/Delete';
 
 import EditOperation from './EditOperation'
+import NewOperation from './NewOperation';
 
    
 const Operations = (props) => {
- const { data , deleteOperation} = props
+ const { data , deleteOperation , updateOperation , newOperation} = props
     return (
         <Container>
           <Paper style={{width: '100%',overflowX: 'auto'}}>
@@ -34,8 +36,8 @@ const Operations = (props) => {
                     <TableCell align="right">{op.TIPO_OPERACION}</TableCell>
                     <TableCell align="right">{op.CATEGORIA_ID}</TableCell>
                     <TableCell align="right">
-                      <button onClick={()=>{deleteOperation(op.ID)}}> X </button>
-                      <EditOperation /> 
+                      <button onClick={()=>{deleteOperation(op.ID)}}> <i> <DeleteIcon /> </i> </button>
+                      <EditOperation updateOperation={updateOperation} id={op.ID} /> 
                       </TableCell>
                   </TableRow>
               ))}
@@ -43,6 +45,9 @@ const Operations = (props) => {
             </TableBody>
           </Table>
         </Paper>
+
+        <NewOperation newOperation={newOperation}/>
+
       </Container>
 
     )

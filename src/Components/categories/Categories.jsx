@@ -5,7 +5,7 @@ import  {  Select, MenuItem , InputLabel , Container , Button, Grid  } from '@mu
 
 const Categories = (props) => {
     
-    const { categories , getOperationByCategories , getEgresos , getIngresos ,getOperations } = props;
+    const { categories , getOperationByCategories , getEgresos , getIngresos ,getOperations , newCategories } = props;
 
      const [value, setValue] = useState(''); 
 
@@ -23,16 +23,16 @@ const Categories = (props) => {
                         <form style={{display : "inline-block"}}> 
                             <InputLabel id="demo-simple-select-label"  >Categorias</InputLabel>
                             <Select onChange={handleChange} value={value} displayEmpty > 
-                                <MenuItem value="" disabled>Categorias </MenuItem>
+                            
                                 {categories.map(cat=>(
-                                    <MenuItem  key={cat.ID}value={cat.ID}label={cat.NOMBRE}>
-                                        {cat.NOMBRE}
+                                    <MenuItem  key={`cat${cat.id}`} value={cat.id}>
+                                        {cat.nombre}
                                     </MenuItem> 
                                 ))}
                             </Select>
                         </form>  
 
-                        <NewCategory />
+                        <NewCategory newCategories={newCategories}/>
                     </div>
                 </Grid>
 

@@ -1,9 +1,12 @@
 import React , { useState } from 'react'
-
 import { Button , TextField , Dialog ,DialogActions , DialogContent ,DialogTitle,} from '@mui/material';
 
-const NewCategory = () => {
+const NewCategory = (props) => {
     const [open , setState ] = useState(false)
+    
+    const [data , setData ] = useState({
+      nombre : ''
+    })
 
     const  handleClickOpen = () => {
         setState( true );
@@ -12,6 +15,15 @@ const NewCategory = () => {
       const handleClose = () => {
         setState( false );
       };
+
+      const handleChange = (event) => {
+        setData({
+          ...data,
+          nombre : event.target.value
+        })
+       console.log(data)
+      };
+
     return (
         <>
         <Button  variant="outlined" /*color="primary" */ onClick={handleClickOpen}>
@@ -32,6 +44,7 @@ const NewCategory = () => {
                 label="Nombre"
                 type="text"
                 fullWidth
+                onChange = {handleChange}
               />
           
           </DialogContent>
@@ -40,7 +53,7 @@ const NewCategory = () => {
             <Button onClick={handleClose} color="primary">
               Cancel
             </Button>
-            <Button onClick={handleClose} color="primary">
+            <Button onClick={()=>(props.newCategories(data))} color="primary">
               Enviar
             </Button>
           </DialogActions>

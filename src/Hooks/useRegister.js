@@ -1,5 +1,5 @@
 import { useFormik } from 'formik';
-import axios from 'axios'; 
+import { userApi } from '../api/axios'
 
 
 const useRegister = () =>{
@@ -9,7 +9,7 @@ const useRegister = () =>{
             password : ""
         },
         onSubmit: values => {
-            axios.post('http://localhost:3000/users/register' ,values)
+            userApi.post('/register' , values)
             .then( res => {
                 console.log(res)
                 alert(res.data.message);

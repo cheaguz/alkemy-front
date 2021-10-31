@@ -1,15 +1,19 @@
-import {LoginProvider} from './context/loginContext'
-/* import { LoginComponent } from "./Components/LoginComponent"; */
-/* import RegisterComponent from './Components/RegisterComponent' */
+import {BrowserRouter as Router,Route,} from "react-router-dom";
 
-import HomePage from './Pages/HomePage'
+import {LoginProvider} from './context/loginContext'
+ import { LoginComponent } from "./Components/LoginComponent"; 
+ import RegisterComponent from './Components/RegisterComponent'
+ import HomePage from './Pages/HomePage'
+
 
 function App() {
   return (
-    <LoginProvider >
-        <div >
-           <HomePage />
-        </div>
+      <LoginProvider >
+        <Router>
+          <Route exact path="/login" component={LoginComponent}/>
+          <Route exact path="/register" component={RegisterComponent}/>
+          <Route exact path='/' component={HomePage} />
+        </Router>
     </LoginProvider>
   );
 }

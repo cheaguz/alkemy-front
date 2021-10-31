@@ -1,9 +1,16 @@
 import React , { useState}from 'react'
 
-import { Button , TextField , Dialog ,DialogActions , DialogContent ,DialogTitle,} from '@mui/material'
-
+import { Button , TextField , Dialog ,DialogActions , DialogContent ,DialogTitle, SvgIcon} from '@mui/material'
+import CreateIcon from '@mui/icons-material/Create';
 const EditOperation = (props) => {
+  const { updateOperation , id} = props;
+
     const [open , setState ] = useState(false)
+    const [form , setForm] = useState({
+      CONCEPTO : '',
+      MONTO : 0,
+      CATEGORIA_ID : ''
+    });
 
     const  handleClickOpen = () => {
         setState( true );
@@ -13,10 +20,23 @@ const EditOperation = (props) => {
         setState( false );
       };
 
+      const handleChange = ({target}) => {
+        setForm({
+          ...form,
+          [target.id] : target.value
+        })
+        console.log(form)
+      };
+
+      const sendForm = () => {
+        updateOperation(id , form)
+
+      };
+
     return (
         <>
         <button /* variant="outlined" color="primary" */ onClick={handleClickOpen}>
-          E
+          <SvgIcon> <CreateIcon /> </SvgIcon>
         </button>
         <Dialog
           open={open}
@@ -26,7 +46,7 @@ const EditOperation = (props) => {
           <DialogTitle id="form-dialog-title"> Editar registro </DialogTitle>
           <DialogContent>
 
-          {["Concepto" , "Monto" ,"Categoria"].map(txt =>(
+          {["CONCEPTO" , "MONTO" ,"CATEGORIA_ID"].map(txt =>(
               <TextField
                 autoFocus
                 margin="dense"
@@ -35,6 +55,7 @@ const EditOperation = (props) => {
                 type="text"
                 fullWidth
                 key={txt}
+                onChange={(e)=>(handleChange(e))}
               />
           ))}
           </DialogContent>
@@ -43,7 +64,7 @@ const EditOperation = (props) => {
             <Button onClick={handleClose} color="primary">
               Cancel
             </Button>
-            <Button onClick={handleClose} color="primary">
+            <Button onClick={(e)=>(sendForm(e))} color="primary">
               Enviar
             </Button>
           </DialogActions>

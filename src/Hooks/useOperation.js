@@ -1,86 +1,89 @@
 import { useState , useEffect } from "react";
-import axios from 'axios'
+import { operationApi  } from '../api/axios'
 
 const useOperation = () =>{
 const [data , setData] = useState([{}])
-const [categories , setCategories ] = useState([]);
+
 
     useEffect( ()=>{
       getOperations()
     },[]);
 
-    useEffect(()=>{
-        getCategories();
-    },[])
-
-    const getOperations = () =>{
-        axios.get("http://localhost:3000/operation")
-        .then(res =>{
-            console.log('data',res.data[0])
-            setData(res.data[0]);
-        })
-        .catch(err => {
+    const getOperations = async () =>{
+        try{
+            const operations = await operationApi.get()
+            setData(operations.data[0]);
+        }catch(err){
             console.log(err)
-        })
+        }
     };
 
 
-    const deleteOperation = (id) => {
-        console.log("deleted",id)
+    const deleteOperation = async (id) => {
+        try {
+            const delOperation = await operationApi.delete(`${id}`)
+            alert(delOperation.data.message)
+            getOperations();
+        } catch (err) {
+            console.log(err)
+        }
     };
 
-    const getCategories = () =>{
-        axios.get("http://localhost:3000/categories")
-        .then(res => {
-            setCategories(res.data.categorias[0])
-        })
-        .catch(err =>{
-            console.log(err)
-        })
+    const getOperationByCategories = async (nombre)=>{
+        try {
+            const opByCategory = await operationApi.get(`/${nombre}`)
+            setData(opByCategory.data.res[0])
+        } catch (error) {
+            console.log(error)
+        }
     };
 
-    const getOperationByCategories = (nombre)=>{
-        console.log('nombre recibido',nombre)
-        axios.get(`http://localhost:3000/operation/${nombre}`) 
-        .then(res => {
-            setData(res.data.res[0])
-        })
-        .catch(err =>{
-            console.log(err)
-        })
+    const getEgresos = async () =>{
+        try {
+            const egresos = await operationApi.get('/egreso')
+            setData(egresos.data[0])
+        } catch (error) {
+            console.log(error)
+        }
+    };
+
+    const getIngresos = async () =>{
+        try {
+            const ingresos = await operationApi.get('/ingreso')
+            setData(ingresos.data[0])
+        } catch (error) {
+            console.log(error)
+        }
+    };
+
+    const updateOperation = async (id , data)  =>{
+        try {
+            const editOperation = await operationApi.put(`/${id}` , {data})
+            console.log(editOperation)
+        } catch (error) {
+            console.log(error)
+        }
+    };
+
+    const newOperation = async (form) => {
+        try {
+            await operationApi.post('/' , form)
+            alert('Operacion creada con exito!')
+        } catch (error) {
+            console.log(error)
+            alert('hubo un error')
+        }
     }
-
-    const getEgresos = () =>{
-        axios.get('http://localhost:3000/operation/egreso')
-        .then(res => {
-            console.log(res)
-            setData(res.data[0])
-        })
-        .catch(err => {
-            console.log(err)
-        })
-    };
-
-    const getIngresos = () =>{
-        axios.get('http://localhost:3000/operation/ingreso')
-        .then(res => {
-            setData(res.data[0])
-        })
-        .catch(err => {
-            console.log(err)
-        })
-    };
-
     
 
     return { data,
          deleteOperation ,
-          categories,
-          getCategories ,
           getEgresos ,
           getOperations ,
           getIngresos,
           getOperationByCategories,
+          updateOperation,
+          newOperation
         }
 };
 
