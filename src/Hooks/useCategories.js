@@ -19,8 +19,6 @@ const useCategories = () => {
 
     const newCategories = async (nombre) =>{
         const newCategories = await categoriesApi.post('', nombre)
-        console.log('se pico ', newCategories)
-        console.log(nombre)
     }
     return {
         categories ,
